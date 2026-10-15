@@ -11,15 +11,20 @@ import '../styles/modal.css'
 import './ProductModal.css'
 
 export default function ProductModal({ product, onClose }) {
+  const { addToCart, updateQty, items, setCartOpen } = useCart()
+
+  // What's already in the cart for this product (one line per model, or one line for a lot)
+  const cartLines = items.filter((i) => i.product.parentId === product.id)
+  const lotLine = items.find((i) => i.product.id === product.id)
+
   const images = productImages(product)
   const [active, setActive] = useState(0)
-  const [qty, setQty] = useState(1)
+  const [qty, setQty] = useState(() => (cartLines[0] ?? lotLine)?.qty ?? 1)
   const [added, setAdded] = useState(false)
-  const [model, setModel] = useState(null)
+  const [model, setModel] = useState(() => cartLines[0]?.product.model ?? null)
   const [showModelHint, setShowModelHint] = useState(false)
   const closeRef = useRef(null)
   const touchX = useRef(null)
-  const { addToCart, items, setCartOpen } = useCart()
 
   const stock = getTotalStock(product)
   const outOfStock = stock <= 0
@@ -34,6 +39,7 @@ export default function ProductModal({ product, onClose }) {
 
   // What goes in the cart: the product itself for lots, a per-model line for choice covers.
   const cartProduct = isChoice ? (model ? cartProductFor(product, model) : null) : product
+  const inCart = cartProduct ? items.find((i) => i.product.id === cartProduct.id) : null
   const totalInCart = cartQtyFor(items, product)
   const hasMany = images.length > 1
 
@@ -60,9 +66,10 @@ export default function ProductModal({ product, onClose }) {
   }, [])
 
   function pickModel(name) {
+    const line = cartLines.find((l) => l.product.model === name)
     setModel(name)
     setShowModelHint(false)
-    setQty(1)
+    setQty(line?.qty ?? 1) // show the quantity already in the cart for this model
   }
 
   // True (and shows a hint) when the buyer still has to pick a model.
@@ -73,10 +80,10 @@ export default function ProductModal({ product, onClose }) {
 
   function handleAdd(e) {
     if (needsModel()) return
-    addToCart(cartProduct, qty)
+    if (inCart) updateQty(cartProduct.id, qty) // change the existing line
+    else addToCart(cartProduct, qty)
     sparkBurst(e.clientX, e.clientY)
     setAdded(true)
-    setQty(1)
     setTimeout(() => setAdded(false), 1600)
   }
 
@@ -158,13 +165,18 @@ export default function ProductModal({ product, onClose }) {
               <div className="model-list" role="radiogroup" aria-label="Phone model">
                 {models.map((m) => {
                   const soldOut = m.stock <= 0
+                  const line = cartLines.find((l) => l.product.model === m.name)
                   return (
                     <button key={m.name} type="button" role="radio" aria-checked={m.name === model} disabled={soldOut}
                       className={`model-chip ${m.name === model ? 'is-selected' : ''} ${soldOut ? 'is-soldout' : ''}`}
                       onClick={() => pickModel(m.name)}>
                       {m.name === model && <span aria-hidden="true">✓ </span>}
                       {m.name}
-                      {soldOut ? ' · sold out' : m.stock <= 5 ? ` · ${m.stock} left` : ''}
+                      {soldOut
+                        ? ' · sold out'
+                        : line
+                          ? ` · ${line.qty} in cart`
+                          : m.stock <= 5 ? ` · ${m.stock} left` : ''}
                     </button>
                   )
                 })}
@@ -188,7 +200,11 @@ export default function ProductModal({ product, onClose }) {
                   <button type="button" onClick={() => setQty((q) => Math.min(maxQty, q + 1))} disabled={qty >= maxQty} aria-label="Increase quantity">+</button>
                 </div>
                 <button type="button" className={`btn btn-primary btn-lg btn-grow ${added ? 'is-added' : ''}`} onClick={handleAdd}>
-                  {added ? '✓ Added to cart' : isChoice && !model ? 'Select a model' : `Add to cart · ${formatPrice((Number(product.price) || 0) * qty)}`}
+                  {added
+                    ? '✓ Cart updated'
+                    : isChoice && !model
+                      ? 'Select a model'
+                      : `${inCart ? 'Update cart' : 'Add to cart'} · ${formatPrice((Number(product.price) || 0) * qty)}`}
                 </button>
               </div>
 

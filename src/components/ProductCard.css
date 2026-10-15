@@ -41,3 +41,33 @@
 
 .product-actions { display: flex; gap: 8px; margin-top: 10px; }
 .product-actions .btn { flex: 1; }
+
+@media (max-width: 520px) {
+  .product-card { border-radius: 16px; }
+
+  /* photo chips: smaller, and the low-stock chip moves above the type chip */
+  .chip { padding: 3px 8px; font-size: .64rem; }
+  .chip-category { top: 8px; left: 8px; }
+  .chip-photos { top: 8px; right: 8px; }
+  .chip-type { bottom: 8px; left: 8px; }
+  .chip-low { bottom: 34px; left: 8px; right: auto; }
+
+  /* text area */
+  .product-body { padding: 10px 12px 12px; gap: 4px; }
+  .product-name { font-size: .92rem; }
+  .product-desc { display: none; }
+  .product-cover-note { font-size: .72rem; }
+
+  /* price above button instead of side by side */
+  .product-footer { flex-direction: column; align-items: stretch; gap: 8px; }
+  .price-tag__now { font-size: 1.05rem; }
+  .price-tag__mrp { font-size: .75rem; }
+  .price-tag__off { font-size: .68rem; padding: 1px 6px; }
+  .add-btn { justify-content: center; width: 100%; padding: 9px 10px; }
+  .qty-stepper--card { width: 100%; justify-content: space-between; }
+
+  /* admin buttons wrap instead of overflowing */
+  .product-actions { flex-wrap: wrap; }
+}
+
+@media (max-width: 520px) { .storefront__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; } }
