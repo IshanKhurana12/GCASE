@@ -1,0 +1,10 @@
+.hero { padding: 48px 0 28px; }
+.hero__inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 32px; align-items: center; }
+.hero h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -0.02em; max-width: 14ch; }
+.hero p { margin-top: 16px; max-width: 46ch; color: var(--muted); font-size: 1.05rem; }
+.hero__actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 26px; }
+.hero__swatches { display: flex; justify-content: center; align-items: flex-end; gap: 12px; height: 240px; }
+.hero__case { position: relative; flex: 0 0 52px; height: calc(150px + var(--i) * 18px); border-radius: 16px; background: var(--c); box-shadow: var(--shadow); transform: translateY(0) rotate(calc((var(--i) - 2) * 3deg)); transition: transform .3s; }
+.hero__case::after { content: ''; position: absolute; top: 8px; left: 8px; width: 18px; height: 18px; border-radius: 50%; background: rgba(0,0,0,.2); box-shadow: inset 0 0 0 3px rgba(255,255,255,.35); }
+.hero__swatches:hover .hero__case { transform: translateY(-10px) rotate(0); }
+@media (max-width: 760px) { .hero__inner { grid-template-columns: 1fr; } .hero__swatches { height: 190px; order: -1; } }

@@ -1,0 +1,4 @@
+.price-tag { display: inline-flex; align-items: baseline; flex-wrap: wrap; gap: 4px 8px; }
+.price-tag__now { font-family: var(--display); font-size: 1.25rem; font-weight: 800; }
+.price-tag__mrp { color: var(--muted); font-size: .85rem; }
+.price-tag__off { background: var(--lime); color: #2c3a05; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; }

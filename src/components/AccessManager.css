@@ -1,0 +1,18 @@
+.access-manager { display: grid; gap: 20px; }
+.access-manager__form { padding: 22px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+.access-manager__form h2 { font-family: var(--display); font-size: 1.2rem; margin-bottom: 14px; }
+.access-manager__fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.access-manager__list-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); }
+.access-manager__list-head input { width: min(280px, 100%); padding: 9px 14px; border: 1.5px solid var(--line); border-radius: 999px; font: inherit; }
+.access-manager__empty { padding: 32px 16px; text-align: center; color: var(--muted); }
+.access-manager__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.access-row { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); }
+.access-row.is-paused .access-row__who { opacity: .5; }
+.access-row__who { flex: 1; min-width: 0; display: grid; }
+.access-row__who strong { font-family: var(--display); letter-spacing: .03em; }
+.access-row__who span { color: var(--muted); font-size: .82rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.access-row__switch { position: relative; flex: none; width: 42px; height: 24px; padding: 0; border: 0; border-radius: 99px; background: var(--line); transition: background .15s; }
+.access-row__switch span { position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; transition: transform .15s; }
+.access-row__switch[aria-checked='true'] { background: var(--accent); }
+.access-row__switch[aria-checked='true'] span { transform: translateX(18px); }
+@media (max-width: 700px) { .access-manager__fields { grid-template-columns: 1fr; } .access-row { flex-wrap: wrap; } .access-row__who { flex-basis: 100%; } }

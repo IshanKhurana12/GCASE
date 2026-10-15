@@ -1,0 +1,13 @@
+.access-gate { display: grid; align-content: center; gap: 28px; min-height: 100vh; width: min(880px, 100% - 32px); margin-inline: auto; padding: 32px 0; }
+.access-gate--loading { place-content: center; }
+.access-gate__spinner { width: 34px; height: 34px; border: 4px solid var(--line); border-top-color: var(--accent); border-radius: 50%; animation: gate-spin .8s linear infinite; }
+.access-gate__head { text-align: center; }
+.access-gate__head h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2rem, 5vw, 2.8rem); }
+.access-gate__head p { margin-top: 6px; color: var(--muted); }
+.access-gate__panels { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.access-gate__panels.is-single { grid-template-columns: minmax(0, 420px); justify-content: center; }
+.access-gate__panel { display: grid; gap: 14px; align-content: start; padding: 26px; border-radius: var(--radius-lg); background: var(--surface); box-shadow: var(--shadow); }
+.access-gate__panel h2 { font-family: var(--display); font-size: 1.3rem; }
+.access-gate__panel > p { margin-top: -8px; color: var(--muted); font-size: .9rem; }
+@keyframes gate-spin { to { transform: rotate(360deg); } }
+@media (max-width: 700px) { .access-gate__panels { grid-template-columns: 1fr; } }

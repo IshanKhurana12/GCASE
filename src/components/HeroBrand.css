@@ -1,0 +1,159 @@
+/* GCASE brand visual: red + black bento of phone accessories */
+.gcase {
+  --g-red: #e10600;
+  --g-red-bright: #ff3b2f;
+  --g-red-deep: #a30400;
+  --g-black: #0b0b0c;
+  width: min(100%, 400px);
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+/* ---------- wordmark tile ---------- */
+.gcase__brand {
+  grid-column: 1 / -1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 26px 26px 24px;
+  border-radius: 28px;
+  color: #fff;
+  background:
+    radial-gradient(90% 120% at 100% 0%, rgba(225, 6, 0, 0.45), transparent 60%),
+    linear-gradient(160deg, #1c1c1f, var(--g-black));
+  box-shadow: 0 24px 40px -22px rgba(0, 0, 0, 0.7);
+}
+
+/* red diagonal band */
+.gcase__brand::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: 12%;
+  width: 46px;
+  height: 200%;
+  background: linear-gradient(180deg, var(--g-red-bright), var(--g-red-deep));
+  transform: rotate(24deg);
+  opacity: 0.9;
+}
+
+.gcase__brand::after {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: calc(12% - 70px);
+  width: 14px;
+  height: 200%;
+  background: rgba(255, 255, 255, 0.12);
+  transform: rotate(24deg);
+}
+
+.gcase__brand > * { position: relative; z-index: 1; }
+
+.gcase__badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  background: var(--g-red);
+  color: #fff;
+}
+
+.gcase__logo {
+  font-weight: 900;
+  font-size: clamp(2.8rem, 9vw, 3.8rem);
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: #fff;
+}
+
+.gcase__logo b {
+  color: var(--g-red-bright);
+  font-weight: 900;
+}
+
+.gcase__sub {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* ---------- product tiles ---------- */
+.gcase__tile {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 150px;
+  padding: 18px;
+  border-radius: 24px;
+  color: #fff;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  animation: gcase-float 6s ease-in-out infinite;
+}
+
+.gcase__tile:hover { transform: translateY(-5px); }
+
+.gcase__tile strong { font-size: 1.05rem; font-weight: 800; line-height: 1.2; }
+.gcase__tile small { font-size: 0.74rem; opacity: 0.7; margin-top: 2px; }
+
+.gcase__icon {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(4px);
+}
+
+.gcase__icon svg { width: 30px; height: 30px; }
+
+/* checkerboard: red / black / black / red */
+.gcase__tile:nth-child(2),
+.gcase__tile:nth-child(5) {
+  background: linear-gradient(155deg, var(--g-red-bright), var(--g-red) 50%, var(--g-red-deep));
+  box-shadow: 0 20px 32px -18px rgba(225, 6, 0, 0.7);
+}
+
+.gcase__tile:nth-child(3),
+.gcase__tile:nth-child(4) {
+  background: linear-gradient(155deg, #262629, var(--g-black));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 20px 32px -18px rgba(0, 0, 0, 0.75);
+}
+
+.gcase__tile:nth-child(3) .gcase__icon,
+.gcase__tile:nth-child(4) .gcase__icon { color: var(--g-red-bright); background: rgba(225, 6, 0, 0.14); }
+
+.gcase__tile:nth-child(3) { animation-delay: -1.5s; }
+.gcase__tile:nth-child(4) { animation-delay: -3s; }
+.gcase__tile:nth-child(5) { animation-delay: -4.5s; }
+
+@keyframes gcase-float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -5px; }
+}
+
+@media (max-width: 480px) {
+  .gcase { gap: 10px; }
+  .gcase__tile { min-height: 132px; padding: 14px; }
+  .gcase__brand { padding: 22px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gcase__tile { animation: none; transition: none; }
+}

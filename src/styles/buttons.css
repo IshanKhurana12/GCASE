@@ -1,0 +1,14 @@
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 10px 18px; border-radius: 999px; border: 1.5px solid transparent; font-weight: 700; background: var(--surface); transition: transform .12s, background .15s, border-color .15s; text-decoration: none; }
+.btn:active { transform: scale(.97); }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover:not(:disabled) { background: var(--accent-dark); }
+.btn-ghost { border-color: var(--line); }
+.btn-ghost:hover:not(:disabled) { border-color: var(--ink); }
+.btn-danger { color: var(--danger); border-color: #f1c9cc; }
+.btn-danger:hover:not(:disabled) { background: #fdeced; }
+.btn-wa { background: var(--wa); color: #fff; }
+.btn-wa:hover:not(:disabled) { filter: brightness(.93); }
+.btn-sm { padding: 6px 14px; font-size: .85rem; }
+.btn-lg { padding: 14px 22px; font-size: 1rem; }
+.btn-grow { flex: 1; }

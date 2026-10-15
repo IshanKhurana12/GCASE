@@ -1,0 +1,13 @@
+.type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.type-toggle-btn { display: flex; flex-direction: column; gap: 2px; text-align: left; padding: 12px 14px; border: 1.5px solid var(--line); border-radius: var(--radius); background: #fff; transition: border-color .15s, background .15s; }
+.type-toggle-btn small { color: var(--muted); font-size: .76rem; }
+.type-toggle-btn.is-active { border-color: var(--accent); background: var(--accent-soft); }
+.model-input-row { display: flex; gap: 8px; }
+.model-input-row input:first-child { flex: 1; min-width: 0; }
+.field .model-qty-input { width: 84px; flex: none; }
+.model-rows { list-style: none; margin: 4px 0 0; padding: 0; display: grid; gap: 6px; max-height: 220px; overflow-y: auto; }
+.model-row { display: flex; align-items: center; gap: 8px; padding: 6px 8px 6px 12px; border-radius: 12px; background: var(--bg); }
+.model-row-name { flex: 1; font-size: .9rem; font-weight: 500; }
+.model-row-remove { width: 28px; height: 28px; border: 0; border-radius: 50%; background: transparent; color: var(--danger); }
+.model-row-remove:hover { background: #fdeced; }
+@media (max-width: 520px) { .type-toggle { grid-template-columns: 1fr; } }

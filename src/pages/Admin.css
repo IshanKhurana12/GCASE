@@ -1,0 +1,17 @@
+.admin__bar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.admin__bar-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; min-height: 64px; }
+.admin__bar h1 { font-family: var(--display); font-size: 1.4rem; }
+.admin__bar-actions { display: flex; align-items: center; gap: 8px; }
+.admin__email { color: var(--muted); font-size: .85rem; }
+.admin__main { padding: 24px 0 64px; }
+.admin__summary { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-bottom: 22px; }
+.admin__summary p { color: var(--muted); }
+.admin__summary strong { font-family: var(--display); font-size: 1.5rem; color: var(--ink); }
+.admin__summary .btn { margin-left: auto; }
+.admin__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.admin__loading { padding: 48px 16px; text-align: center; color: var(--muted); }
+.admin__toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%); z-index: 200; padding: 11px 20px; border-radius: 999px; background: var(--ink); color: #fff; font-weight: 700; font-size: .9rem; box-shadow: var(--shadow); }
+@media (max-width: 520px) { .admin__email { display: none; } }
+.admin__tabs { display: inline-flex; gap: 4px; padding: 4px; margin-bottom: 20px; border-radius: 999px; background: var(--surface); border: 1.5px solid var(--line); }
+.admin__tabs button { padding: 8px 18px; border: 0; border-radius: 999px; background: transparent; font-weight: 700; color: var(--muted); }
+.admin__tabs button.is-active { background: var(--ink); color: #fff; }

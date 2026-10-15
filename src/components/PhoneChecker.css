@@ -1,0 +1,9 @@
+.phone-checker { display: grid; gap: 10px; }
+.phone-checker__label { font-weight: 700; font-size: .88rem; }
+.phone-checker__row { display: flex; align-items: stretch; border: 1.5px solid var(--line); border-radius: 12px; overflow: hidden; background: #fff; transition: border-color .15s; }
+.phone-checker__row:focus-within { border-color: var(--accent); }
+.phone-checker__prefix { display: grid; place-items: center; padding: 0 12px; background: var(--bg); color: var(--muted); font-weight: 700; }
+.phone-checker__row input { flex: 1; min-width: 0; padding: 12px 13px; border: 0; font: inherit; font-size: 1.05rem; letter-spacing: .04em; }
+.phone-checker__row input:focus { outline: none; }
+.phone-checker__denied { display: grid; gap: 6px; justify-items: start; padding: 12px 14px; border-radius: 12px; background: #fff3d6; color: #6b4600; font-size: .9rem; }
+.phone-checker__denied p { margin: 0; }

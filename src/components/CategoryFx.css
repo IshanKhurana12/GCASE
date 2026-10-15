@@ -1,0 +1,19 @@
+.category-fx { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; --fx: var(--accent); }
+.category-fx span { position: absolute; bottom: -10px; width: 7px; height: 7px; border-radius: 50%; background: var(--fx); opacity: 0; animation: fx-rise 5.4s ease-in infinite; animation-play-state: paused; }
+.product-card.is-visible .category-fx span { animation-play-state: running; }
+
+.category-fx--clear { --fx: #7dd3fc; }
+.category-fx--clear span { background: transparent; border: 1.5px solid var(--fx); width: 10px; height: 10px; }
+.category-fx--silicone { --fx: #fbb6ce; }
+.category-fx--glitter { --fx: #f5c542; }
+.category-fx--glitter span { border-radius: 1px; transform: rotate(45deg); animation-name: fx-twinkle; bottom: auto; top: 60%; }
+.category-fx--glitter span:nth-child(odd) { top: 82%; }
+.category-fx--glitter span:nth-child(3n) { top: 30%; }
+.category-fx--printed span:nth-child(odd) { --fx: #ff8fab; }
+.category-fx--printed span:nth-child(even) { --fx: #6ee7b7; }
+.category-fx--leather { --fx: #b08968; }
+.category-fx--armor { --fx: #94a3b8; }
+.category-fx--armor span { border-radius: 2px; }
+
+@keyframes fx-rise { 0% { transform: translateY(0); opacity: 0; } 20% { opacity: .55; } 100% { transform: translateY(-130px); opacity: 0; } }
+@keyframes fx-twinkle { 0%, 100% { transform: rotate(45deg) scale(0); opacity: 0; } 50% { transform: rotate(45deg) scale(1.4); opacity: .8; } }

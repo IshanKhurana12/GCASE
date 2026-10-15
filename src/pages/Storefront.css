@@ -1,0 +1,7 @@
+.storefront { scroll-margin-top: 80px; }
+.storefront__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 20px; }
+.storefront__skeleton { aspect-ratio: 3 / 4; border-radius: var(--radius-lg); background: linear-gradient(100deg, #e8eceb 30%, #f4f6f5 50%, #e8eceb 70%) 0 0 / 200% 100%; animation: skeleton 1.3s linear infinite; }
+.storefront__notice { padding: 40px 16px; text-align: center; color: var(--muted); }
+.storefront__notice--error { color: var(--danger); }
+@keyframes skeleton { to { background-position: -200% 0; } }
+@media (max-width: 520px) { .storefront__grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }

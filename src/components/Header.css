@@ -1,0 +1,15 @@
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(243, 245, 244, .88); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+.site-header__inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
+.site-header__brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-weight: 800; font-size: 1.3rem; color: var(--ink); text-decoration: none; }
+/* A tiny phone-case mark: rounded body with a camera bump. */
+.site-header__logo { position: relative; width: 22px; height: 30px; border-radius: 7px; background: var(--accent); }
+.site-header__logo::after { content: ''; position: absolute; top: 4px; left: 4px; width: 9px; height: 9px; border-radius: 50%; background: var(--lime); }
+.site-header__cart { position: relative; display: inline-flex; align-items: center; gap: 6px; padding: 9px 16px; border-radius: 999px; border: 1.5px solid var(--line); background: #fff; font-weight: 700; }
+.site-header__cart:hover { border-color: var(--ink); }
+.site-header__badge { min-width: 20px; padding: 1px 6px; border-radius: 99px; background: var(--accent); color: #fff; font-size: .72rem; text-align: center; }
+@media (max-width: 480px) { .site-header__cart span { display: none; } }
+.site-header__right { display: flex; align-items: center; gap: 12px; }
+.site-header__link { padding: 0; border: 0; background: none; color: var(--muted); font-size: .88rem; font-weight: 700; text-decoration: none; }
+.site-header__link:hover { color: var(--ink); }
+.site-header__who { color: var(--muted); font-size: .85rem; letter-spacing: .03em; }
+@media (max-width: 560px) { .site-header__who { display: none; } }
